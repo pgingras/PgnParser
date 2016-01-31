@@ -1,7 +1,8 @@
-var DARK_SQUARE = "#0066CC";
+var DARK_SQUARE = "#347FC4";
 var LIGHT_SQUARE = "#F4EBD9";
 var GRID_SIZE = 640;
 var SQUARE_SIZE = GRID_SIZE / 8;
+var PIECE_SIZE = SQUARE_SIZE * 0.8;
 
 var WHITE_KING;
 var WHITE_BISHOP;
@@ -90,8 +91,8 @@ function drawGridNumbers() {
 }
 
 function drawPiece(col, line, pieceType, color) {
-    var x = col * (GRID_SIZE / 8);
-    var y = line * (GRID_SIZE / 8);
+    var x = col * (GRID_SIZE / 8) + SQUARE_SIZE * 0.1;
+    var y = line * (GRID_SIZE / 8) + SQUARE_SIZE * 0.1;
     switch (pieceType) {
         case "N":
             drawKnight(x, y, color);
@@ -117,56 +118,53 @@ function drawPiece(col, line, pieceType, color) {
 
 function drawBishop(x, y, color) {
     if (color == 0) {
-        image(BLACK_BISHOP, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(BLACK_BISHOP, x, y, PIECE_SIZE, PIECE_SIZE);
     }
     else {
-        image(WHITE_BISHOP, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(WHITE_BISHOP, x, y, PIECE_SIZE, PIECE_SIZE);
     }
 }
 
 function drawPawn(x, y, color) {
-    var PAWN_SIZE = SQUARE_SIZE * 0.8;
-    var PAWN_X = x + SQUARE_SIZE * 0.1;
-    var PAWN_Y = y + SQUARE_SIZE * 0.1;
     if (color == 0) {
-        image(BLACK_PAWN, PAWN_X, PAWN_Y, PAWN_SIZE, PAWN_SIZE);
+        image(BLACK_PAWN, x, y, PIECE_SIZE, PIECE_SIZE);
     }
     else {
-        image(WHITE_PAWN, PAWN_X, PAWN_Y, PAWN_SIZE, PAWN_SIZE);
+        image(WHITE_PAWN, x, y, PIECE_SIZE, PIECE_SIZE);
     }
 }
 
 function drawQueen(x, y, color) {
     if (color == 0) {
-        image(BLACK_QUEEN, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(BLACK_QUEEN, x, y, PIECE_SIZE, PIECE_SIZE);
     }
     else {
-        image(WHITE_QUEEN, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(WHITE_QUEEN, x, y, PIECE_SIZE, PIECE_SIZE);
     }
 }
 function drawRook(x, y, color) {
     if (color == 0) {
-        image(BLACK_ROOK, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(BLACK_ROOK, x, y, PIECE_SIZE, PIECE_SIZE);
     }
     else {
-        image(WHITE_ROOK, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(WHITE_ROOK, x, y, PIECE_SIZE, PIECE_SIZE);
     }
 }
 function drawKnight(x, y, color) {
     if (color == 0) {
-        image(BLACK_KNIGHT, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(BLACK_KNIGHT, x, y, PIECE_SIZE, PIECE_SIZE);
     }
     else {
-        image(WHITE_KNIGHT, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(WHITE_KNIGHT, x, y, PIECE_SIZE, PIECE_SIZE);
     }
 }
 
 function drawKing(x, y, color) {
     if (color == 0) {
-        image(BLACK_KING, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(BLACK_KING, x, y, PIECE_SIZE, PIECE_SIZE);
     }
     else {
-        image(WHITE_KING, x, y, SQUARE_SIZE, SQUARE_SIZE);
+        image(WHITE_KING, x, y, PIECE_SIZE, PIECE_SIZE);
     }
 }
 
