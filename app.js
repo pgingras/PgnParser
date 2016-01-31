@@ -17,6 +17,7 @@ var BLACK_PAWN;
 var BLACK_QUEEN;
 var BLACK_ROOK;
 
+var pieces = [];
 var PIECE_TYPES = ["B", "Q", "K", "N", "R", "p"];
 var LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -41,9 +42,8 @@ function setup() {
     drawGrid(GRID_SIZE, 0, 0);
     drawGridLetters();
     drawGridNumbers();
-    drawBenkoPosition();
-
-
+    createStartingPosition();
+    drawStartingPosition();
 }
 
 
@@ -168,37 +168,43 @@ function drawKing(x, y, color) {
     }
 }
 
-function drawBenkoPosition() {
-    drawPiece(4, 7, "K", 255);
-    drawPiece(4, 0, "K", 0);
-    drawPiece(3, 7, "Q", 255);
-    drawPiece(3, 0, "Q", 0);
-    drawPiece(0, 7, "R", 255);
-    drawPiece(7, 7, "R", 255);
-    drawPiece(0, 0, "R", 0);
-    drawPiece(7, 0, "R", 0);
-    drawPiece(1, 0, "N", 0);
-    drawPiece(1, 7, "N", 255);
-    drawPiece(5, 2, "N", 0);
-    drawPiece(6, 7, "N", 255);
-    drawPiece(2, 7, "B", 255);
-    drawPiece(5, 7, "B", 255);
-    drawPiece(2, 0, "B", 0);
-    drawPiece(5, 0, "B", 0);
-    drawPiece(2, 4, "p", 255);
-    drawPiece(3, 3, "p", 255);
-    drawPiece(2, 3, "p", 0);
-    drawPiece(1, 3, "p", 0);
-    drawPiece(0, 6, "p", 255);
-    drawPiece(1, 6, "p", 255);
-    drawPiece(4, 6, "p", 255);
-    drawPiece(5, 6, "p", 255);
-    drawPiece(6, 6, "p", 255);
-    drawPiece(7, 6, "p", 255);
-    drawPiece(3, 1, "p", 0);
-    drawPiece(4, 1, "p", 0);
-    drawPiece(5, 1, "p", 0);
-    drawPiece(6, 1, "p", 0);
-    drawPiece(7, 1, "p", 0);
-    drawPiece(0, 1, "p", 0);
+function createStartingPosition() {
+    pieces.push(new Piece("K", 255, {x: 4, y: 7}));
+    pieces.push(new Piece("K", 0, {x: 4, y: 0}));
+    pieces.push(new Piece("Q", 0, {x: 3, y: 0}));
+    pieces.push(new Piece("Q", 255, {x: 3, y: 7}));
+    pieces.push(new Piece("B", 0, {x: 2, y: 0}));
+    pieces.push(new Piece("B", 255, {x: 2, y: 7}));
+    pieces.push(new Piece("B", 0, {x: 5, y: 0}));
+    pieces.push(new Piece("B", 255, {x: 5, y: 7}));
+    pieces.push(new Piece("R", 0, {x: 0, y: 0}));
+    pieces.push(new Piece("R", 255, {x: 7, y: 7}));
+    pieces.push(new Piece("R", 0, {x: 7, y: 0}));
+    pieces.push(new Piece("R", 255, {x: 0, y: 7}));
+    pieces.push(new Piece("N", 0, {x: 1, y: 0}));
+    pieces.push(new Piece("N", 255, {x: 6, y: 7}));
+    pieces.push(new Piece("N", 0, {x: 6, y: 0}));
+    pieces.push(new Piece("N", 255, {x: 1, y: 7}));
+    pieces.push(new Piece("p", 0, {x: 0, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 1, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 2, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 3, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 4, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 5, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 6, y: 1}));
+    pieces.push(new Piece("p", 0, {x: 7, y: 1}));
+    pieces.push(new Piece("p", 255, {x: 0, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 1, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 2, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 3, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 4, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 5, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 6, y: 6}));
+    pieces.push(new Piece("p", 255, {x: 7, y: 6}));
+}
+
+function drawStartingPosition() {
+    pieces.forEach(function (piece) {
+        drawPiece(piece.position.x, piece.position.y, piece.type, piece.color);
+    })
 }

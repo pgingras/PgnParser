@@ -1,0 +1,19 @@
+"[Event "Rated game"]
+[Site "http://lichess.org/PNWbB3rh"]
+[Date "2016.01.30"]
+[White "MarioL"]
+[Black "mistborn"]
+[Result "0-1"]
+[WhiteElo "1914"]
+[BlackElo "2040"]
+[PlyCount "122"]
+[Variant "Standard"]
+[TimeControl "60+0"]
+[ECO "A56"]
+[Opening "Benoni Defence, Modern Variation"]
+[Termination "Time forfeit"]
+[Annotator "lichess.org"]
+
+1. d4 Nf6 2. c4 c5 { Benoni Defence, Modern Variation } 3. Nc3 cxd4 4. Qxd4 Nc6 5. Qd1 a6 6. a3 e6 7. Nf3 d5 8. e3 Be7 9. cxd5 exd5 10. Be2 h6 11. O-O O-O 12. Bd3 Be6 13. Bb1 Rc8 14. Nd4 Qc7 15. Nxe6 fxe6 16. Qc2 e5 17. Bd2 e4 18. Ne2 Rfd8 19. Bc3 Ne5 20. Rc1 Nd3 21. Rd1 Bd6 22. Qd2 Be5 23. Bxd3 exd3 24. Qxd3 Bxc3 25. Nxc3 Qe5 26. Qe2 Qg5 27. Rd4 b5 28. Rad1 Qe5 29. h3 Rd6 30. Qf3 Rcd8 31. Ne2 Qg5 32. Qg3 Qxg3 33. Nxg3 Ne8 34. Ne2 Nc7 35. Nf4 g5 36. Nh5 Ne6 37. R4d3 Nc5 38. R3d2 Ne4 39. Rd4 Nf6 40. Nxf6+ Rxf6 41. Rxd5 Rxd5 42. Rxd5 Rc6 43. Rd8+ Kf7 44. Rd2 Ke6 45. Kh2 Rc1 46. Kg3 Rc5 47. b4 Re5 48. Rd3 Re4 49. Rd4 Re5 50. Re4 Rxe4 51. f3 Re5 52. f4 Rd5 53. f5+ Kxf5 54. e4+ Kg6 55. exd5 Kf6 56. d6 Ke5 57. d7 Ke6 58. h4 Kd5 59. hxg5 Kc4 60. gxh6 Kb3 61. d8=Q Kxa3 { White forfeits on time } 0-1
+
+"
