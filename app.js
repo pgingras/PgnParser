@@ -1,15 +1,37 @@
 var DARK_SQUARE = "#0066CC";
 var LIGHT_SQUARE = "#F4EBD9";
-var CONTOUR = "#91A5DB";
 var GRID_SIZE = 640;
 var SQUARE_SIZE = GRID_SIZE / 8;
 
 var WHITE_KING;
+var WHITE_BISHOP;
+var WHITE_KNIGHT;
+var WHITE_PAWN;
+var WHITE_QUEEN;
+var WHITE_ROOK;
+var BLACK_KING;
+var BLACK_BISHOP;
+var BLACK_KNIGHT;
+var BLACK_PAWN;
+var BLACK_QUEEN;
+var BLACK_ROOK;
+
 var PIECE_TYPES = ["B", "Q", "K", "N", "R", "p"];
 var LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
-function preload(){
+function preload() {
     WHITE_KING = loadImage("assets/image/whiteKing.png");
+    BLACK_KING = loadImage("assets/image/blackKing.png");
+    WHITE_BISHOP = loadImage("assets/image/whiteBishop.png");
+    WHITE_KNIGHT = loadImage("assets/image/whiteKnight.png");
+    WHITE_PAWN = loadImage("assets/image/whitePawn.png");
+    WHITE_QUEEN = loadImage("assets/image/whiteQueen.png");
+    WHITE_ROOK = loadImage("assets/image/whiteRook.png");
+    BLACK_BISHOP = loadImage("assets/image/blackBishop.png");
+    BLACK_KNIGHT = loadImage("assets/image/blackKnight.png");
+    BLACK_PAWN = loadImage("assets/image/blackPawn.png");
+    BLACK_QUEEN = loadImage("assets/image/blackQueen.png");
+    BLACK_ROOK = loadImage("assets/image/blackRook.png");
 }
 
 function setup() {
@@ -94,149 +116,58 @@ function drawPiece(col, line, pieceType, color) {
 }
 
 function drawBishop(x, y, color) {
-    fill(color);
-    stroke(CONTOUR);
-    strokeWeight(2);
-    beginShape();
-    vertex(x + SQUARE_SIZE / 3 * 2, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 3, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 35, y + 3 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 45, y + 1 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 55, y + 1 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 65, y + 3 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 3 * 2, y + 7 / 8 * SQUARE_SIZE);
-    endShape();
-
+    if (color == 0) {
+        image(BLACK_BISHOP, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
+    else {
+        image(WHITE_BISHOP, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
 }
 
 function drawPawn(x, y, color) {
-    fill(color);
-    stroke(CONTOUR);
-    strokeWeight(2);
-    beginShape();
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 3, y + 7 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 3 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 3 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 7, y + 7 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-
-    endShape();
+    var PAWN_SIZE = SQUARE_SIZE * 0.8;
+    var PAWN_X = x + SQUARE_SIZE * 0.1;
+    var PAWN_Y = y + SQUARE_SIZE * 0.1;
+    if (color == 0) {
+        image(BLACK_PAWN, PAWN_X, PAWN_Y, PAWN_SIZE, PAWN_SIZE);
+    }
+    else {
+        image(WHITE_PAWN, PAWN_X, PAWN_Y, PAWN_SIZE, PAWN_SIZE);
+    }
 }
 
 function drawQueen(x, y, color) {
-    fill(color);
-    stroke(CONTOUR);
-    strokeWeight(2);
-    beginShape();
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 3, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 31, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 38, y + 4 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 44, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 50, y + 4 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 56, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 62, y + 4 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 69, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 75, y + 4 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 3 * 2, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-    endShape();
+    if (color == 0) {
+        image(BLACK_QUEEN, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
+    else {
+        image(WHITE_QUEEN, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
 }
 function drawRook(x, y, color) {
-    fill(color);
-    stroke(CONTOUR);
-    strokeWeight(2);
-    beginShape();
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 3, y + 5 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 3, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 1 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 3 / 4, y + 1 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 3 / 4, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 7 / 10, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 7 / 10, y + 5 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 3 / 4, y + 6 / 8 * SQUARE_SIZE);
-    endShape();
+    if (color == 0) {
+        image(BLACK_ROOK, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
+    else {
+        image(WHITE_ROOK, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
 }
 function drawKnight(x, y, color) {
-    fill(color);
-    stroke(CONTOUR);
-    strokeWeight(2);
-
-    beginShape();
-    vertex(x + SQUARE_SIZE / 10 * 7, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 3 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 5, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 5, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 45, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 40, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 40, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 35, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 10, y + 5 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 7, y + 6 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 10, y + 7 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 15, y + 7 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 35, y + 13 / 32 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 40, y + 5 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 100 * 20, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 7, y + 7 / 8 * SQUARE_SIZE);
-    endShape();
-    fill(255);
-    ellipse(x + SQUARE_SIZE / 3, y + SQUARE_SIZE / 100 * 30, 8, 8);
+    if (color == 0) {
+        image(BLACK_KNIGHT, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
+    else {
+        image(WHITE_KNIGHT, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
 }
 
 function drawKing(x, y, color) {
-    //image(WHITE_KING,x,y, SQUARE_SIZE, SQUARE_SIZE);
-    fill(color);
-    stroke(CONTOUR);
-    strokeWeight(2);
-    beginShape();
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 7 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 4, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 45 / 100, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 45 / 100, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 35 / 100, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 35 / 100, y + 2 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 45 / 100, y + 2 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 45 / 100, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 55 / 100, y + 1 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 55 / 100, y + 2 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 65 / 100, y + 2 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 65 / 100, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 55 / 100, y + 3 / 16 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE * 55 / 100, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 2 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 4 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 10 * 6, y + 6 / 8 * SQUARE_SIZE);
-    vertex(x + SQUARE_SIZE / 4 * 3, y + 6 / 8 * SQUARE_SIZE);
-    endShape();
+    if (color == 0) {
+        image(BLACK_KING, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
+    else {
+        image(WHITE_KING, x, y, SQUARE_SIZE, SQUARE_SIZE);
+    }
 }
 
 function drawBenkoPosition() {
