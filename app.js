@@ -43,7 +43,7 @@ function setup() {
     drawGridLetters();
     drawGridNumbers();
     createStartingPosition();
-    drawStartingPosition();
+    drawPosition(pieces);
 }
 
 
@@ -112,7 +112,6 @@ function drawPiece(col, line, pieceType, color) {
         default:
             drawPawn(x, y, color);
             break;
-
     }
 }
 
@@ -203,7 +202,8 @@ function createStartingPosition() {
     pieces.push(new Piece("p", 255, {x: 7, y: 6}));
 }
 
-function drawStartingPosition() {
+function drawPosition(pieces) {
+    drawGrid(GRID_SIZE, 0, 0);
     pieces.forEach(function (piece) {
         drawPiece(piece.position.x, piece.position.y, piece.type, piece.color);
     })
