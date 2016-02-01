@@ -3,7 +3,7 @@ function parseMove(pieces, move, color) {
     var pieceType = move[0];
     var possibleMovedPieces = removeWrongColorAndTypePieces();
     var pieceNewPosition;
-    var newPieces = [];
+    var newPieces;
 
     newPieces = findFinalPosition();
 
@@ -46,7 +46,6 @@ function parseMove(pieces, move, color) {
 
         }
         return possibleMovedPieces[0].position;
-
     }
 
     function findFinalPosition() {
