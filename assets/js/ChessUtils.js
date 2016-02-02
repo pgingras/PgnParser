@@ -32,3 +32,7 @@ function calculateSquareDistance(p1,p2){
 function isAChessLetter(char){
     return CHESS_LETTERS.indexOf(char) != -1;
 }
+
+function isCastling(move){
+    return move[0] == 'O';
+}
