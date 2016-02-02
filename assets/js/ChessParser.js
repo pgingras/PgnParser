@@ -7,7 +7,21 @@ function parseMove(pieces, move, color) {
 
     newPieces = findFinalPosition();
     if (isCastling(move)) {
+        var pieceY;
+        if (color == 0) {
+            pieceY = 0;
+        }
+        else {
+            pieceY = 7;
+        }
+        if (move.length <= 4) {
+            castleShort(pieceY);
+        }
+        else {
+            castleLong(pieceY);
+        }
 
+        return pieces;
     }
     else {
         var movedPiecePos;
@@ -38,11 +52,33 @@ function parseMove(pieces, move, color) {
                 piece.position = pieceNewPosition;
             }
         });
+
+
+        return newPieces;
     }
 
 
-    return newPieces;
+    function castleShort(pieceY) {
+        pieces.forEach(function (piece) {
+            if (piece.type == "K" && piece.position.y == pieceY) {
+                piece.position.x = 6;
+            }
+            if (piece.type == "R" && piece.position.y == pieceY && piece.position.x == 7) {
+                piece.position.x = 5;
+            }
+        });
+    }
 
+    function castleLong(pieceY) {
+        pieces.forEach(function (piece) {
+            if (piece.type == "K" && piece.position.y == pieceY) {
+                piece.position.x = 2;
+            }
+            if (piece.type == "R" && piece.position.y == pieceY && piece.position.x == 0) {
+                piece.position.x = 3;
+            }
+        });
+    }
 
     function diagonalFilter(piece) {
         return Math.abs(piece.position.x - pieceNewPosition.x) == Math.abs(piece.position.y - pieceNewPosition.y);
@@ -52,23 +88,22 @@ function parseMove(pieces, move, color) {
         return piece.position.x == pieceNewPosition.x || piece.position.y == pieceNewPosition.y;
     }
 
-    function freePathFilter(piece){
+    function freePathFilter(piece) {
         var isPathFree = true;
-        if(piece.position.x == pieceNewPosition.x){
+        if (piece.position.x == pieceNewPosition.x) {
             var minIndex = Math.min(piece.position.y, pieceNewPosition.y);
             var maxIndex = Math.max(piece.position.y, pieceNewPosition.y);
-            pieces.forEach(function(piece){
-                if(piece.position.y < maxIndex && piece.position.y > minIndex && piece.position.x == pieceNewPosition.x){
+            pieces.forEach(function (piece) {
+                if (piece.position.y < maxIndex && piece.position.y > minIndex && piece.position.x == pieceNewPosition.x) {
                     isPathFree = false;
                 }
             });
         }
-        else{
+        else {
             var minIndex = Math.min(piece.position.x, pieceNewPosition.x);
             var maxIndex = Math.max(piece.position.x, pieceNewPosition.x);
-            console.log(minIndex + " max:" + maxIndex);
-            pieces.forEach(function(piece){
-                if(piece.position.x < maxIndex && piece.position.x > minIndex  && piece.position.y == pieceNewPosition.y){
+            pieces.forEach(function (piece) {
+                if (piece.position.x < maxIndex && piece.position.x > minIndex && piece.position.y == pieceNewPosition.y) {
                     isPathFree = false;
                 }
             });
@@ -85,7 +120,8 @@ function parseMove(pieces, move, color) {
     }
 
     function findMovedQueenPosition() {
-        possibleMovedPieces = possibleMovedPieces.filter(diagonalFilter || straightFilter);
+        var tempPossiblePieces = possibleMovedPieces.slice();
+        possibleMovedPieces = possibleMovedPieces.filter(diagonalFilter).concat(tempPossiblePieces.filter(straightFilter));
 
         movedPieceWithAmbiguity();
 
@@ -143,7 +179,7 @@ function parseMove(pieces, move, color) {
         if (isCapture(move)) {
             pieceNewPosition = chessCoordinatesToPosition(move.substring(move.indexOf("x") + 1, move.indexOf("x") + 3));
             return pieces.filter(function (piece) {
-                return piece.position != pieceNewPosition;
+                return piece.position.x != pieceNewPosition.x || piece.position.y != pieceNewPosition.y;
             });
         }
         else {

@@ -20,6 +20,7 @@ var BLACK_ROOK;
 var pieces = [];
 var PIECE_TYPES = ["B", "Q", "K", "N", "R", "p"];
 var LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+var chessGame;
 
 function preload() {
     WHITE_KING = loadImage("assets/image/whiteKing.png");
@@ -44,6 +45,14 @@ function setup() {
     drawGridNumbers();
     createStartingPosition();
     drawPosition(pieces);
+    createChessGame();
+
+
+}
+
+function createChessGame(){
+    chessGame = new ChessGame(new Pgn(example), pieces);
+
 }
 
 
