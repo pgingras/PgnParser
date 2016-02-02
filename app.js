@@ -55,6 +55,14 @@ function createChessGame(){
 
 }
 
+function keyReleased() {
+    if(key == "'"){
+        pieces = chessGame.nextPosition(pieces);
+        drawPosition(pieces);
+    }
+    return false; // prevent any default behavior
+}
+
 
 function draw() {
 
@@ -217,3 +225,4 @@ function drawPosition(pieces) {
         drawPiece(piece.position.x, piece.position.y, piece.type, piece.color);
     })
 }
+

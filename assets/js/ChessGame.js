@@ -8,9 +8,16 @@ function ChessGame(pgn, pieces) {
     var gamePositions = [pieces];
     //parseGame();
 
-    this.nextPosition = function () {
+    this.nextPosition = function (parsedPieces) {
+
+        if (moveIndex % 2 == 0) {
+            parsedPieces = parseMove(parsedPieces, self.moves[moveIndex], 255);
+        }
+        else {
+            parsedPieces = parseMove(parsedPieces, self.moves[moveIndex], 0);
+        }
         moveIndex++;
-        return gamePositions[moveIndex];
+        return parsedPieces;
     };
 
     function parseGame() {

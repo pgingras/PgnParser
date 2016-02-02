@@ -151,7 +151,7 @@ function parseMove(pieces, move, color) {
 
     function findMovedKnightPosition() {
         possibleMovedPieces = possibleMovedPieces.filter(function (piece) {
-            return calculateSquareDistance(piece.position, pieceNewPosition) == 3;
+            return isAtKnightDistance(piece.position, pieceNewPosition);
         });
 
         movedPieceWithAmbiguity();
