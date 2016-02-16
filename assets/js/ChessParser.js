@@ -50,6 +50,9 @@ function parseMove(pieces, move, color) {
         newPieces.forEach(function (piece) {
             if (piece.position == movedPiecePos) {
                 piece.position = pieceNewPosition;
+                if(isPromotion(move)){
+                    piece.type = getPromotionPieceType(move);
+                }
             }
         });
 

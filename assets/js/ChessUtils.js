@@ -37,3 +37,13 @@ function isAChessLetter(char) {
 function isCastling(move) {
     return move[0] == 'O';
 }
+
+
+function isPromotion(move){
+    return move.indexOf("=") != -1;
+}
+
+function getPromotionPieceType(move){
+    var regexp = /[A-Z]/;
+    return move.match(regexp)[0];
+}
