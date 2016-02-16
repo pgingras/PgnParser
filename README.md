@@ -2,4 +2,6 @@
 
 Simple pgn parser in javascript.
 
-Incomplete for now.
+Parse chess game from the pgn.
+
+Example pgn is in Pgn.js
